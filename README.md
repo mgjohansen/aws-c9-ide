@@ -13,3 +13,15 @@ https://aws.amazon.com/cloud9/
 https://docs.aws.amazon.com/cloud9/latest/user-guide/  
 https://aws.amazon.com/cloud9/pricing/  
 https://ace.c9.io/  
+
+# AWS C9 - Install PowerShell Core 6 on AMI image
+Source: https://github.com/PowerShell/PowerShell/blob/master/docker/community/amazonlinux/Dockerfile  
+Note: Version numbers (cmd number 5) will need to be adjusted after PowerShell versions get's released.
+
+1. sudo yum install -y curl libunwind libicu libcurl openssl libuuid.x86_64 && yum clean all
+2. curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/microsoft.repo
+3. wget https://raw.githubusercontent.com/PowerShell/PowerShell/master/docker/InstallTarballPackage.sh /InstallTarballPackage.sh
+4. sudo chmod +x InstallTarballPackage.sh
+5. sudo ./InstallTarballPackage.sh "6.0.1" "powershell-6.0.1-linux-x64.tar.gz"
+6. sudo chmod +x /usr/bin/pwsh
+7. sudo rm -f InstallTarballPackage.sh
